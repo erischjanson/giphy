@@ -9,6 +9,8 @@ for (var i=0; i < topics.length; i++){
 	//assign the text as the value of an attribute "data-topic"
 };
 	//$('#viewGifs').prepend("<img src='"+response.data[i].images.downsized.url+"'>");
+
+	//button onclick event that will grab the gifs and apply attributes
  $("#buttons").on("click", ".test" , function(){
 
  	var topic = ($(this).attr("data-topic"));
@@ -19,18 +21,37 @@ for (var i=0; i < topics.length; i++){
 		method: "GET"
 	}).done(function(response){
 		console.log(response);
-		console.log("The response object: " + response.data[1].url);
-		console.log(response.length);
+		console.log("The response object: " + response.data[1].url);		
 		//var staticGif=response.data[1].url;
 		for (var i=0; i < response.data.length; i++){			
-			console.log(response.data[i].rating)
 			$('#viewGifs').prepend("<p>Rating: "+response.data[i].rating+"</p>");
 			$('#viewGifs').prepend("<img src='"+response.data[i].images.downsized_still.url+"'>");
+			console.log(response.data[i].images.downsized_still.url);
+			$("img").attr("data-state", "still");
+			$("img").attr("data-still", "" + response.data[i].images.downsized_still.url+ "");
+			$("img").attr("data-animate", "" + response.data[i].images.downsized.url + "");
+			$("img").addClass("gif");
+			console.log(response.data[i].images.downsized_still.url);
+
+
 		}
 		
 		});
 
  });
+
+ //image onclick events that will either animate or pause the gifs
+ //if click on image and state is still, flip to animate. vice versa. always reset state.
+ $("#viewGifs").on("click", ".gif", function(){
+ 	$(this).attr("src", $(this).attr("data-animate"));
+ 	console.log("testing");
+ 	$(this).attr("data-state", "animate");
+
+ })
+
+
+//condition for image onclick to check whether state is animate or still
+
 
 
 /*$.ajax({
