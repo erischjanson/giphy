@@ -39,7 +39,6 @@ for (var i=0; i < topics.length; i++){
 			$("#viewGifs").prepend(rating);
 			$("#viewGifs").prepend(gif);
 
-
 		}
 		
 		});
@@ -49,10 +48,17 @@ for (var i=0; i < topics.length; i++){
  //image onclick events that will either animate or pause the gifs
  //if click on image and state is still, flip to animate. vice versa. always reset state.
  $("#viewGifs").on("click", ".gif", function(){
- 	$(this).attr("src", $(this).attr("data-animate"));
- 	console.log("testing");
- 	$(this).attr("data-state", "animate");
+ 	var state=$(this).attr("data-state");
+	 	if(state==="still"){
+	 		$(this).attr("src", $(this).attr("data-animate"));
+		 	console.log("testing");
+		 	$(this).attr("data-state", "animate");
+	 	} else {
+	 		$(this).attr("src", $(this).attr("data-still"));
+	 		$(this).attr("data-state", "still");
 
+	 	}
+ 	
  })
 
 
