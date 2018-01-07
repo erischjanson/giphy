@@ -1,4 +1,6 @@
 var topics=["french", "italian", "wine", "cheese", "coffee", "chocolate", "pasta", "paris", "bordeaux", "rome"];
+function renderButton(){
+	$("#buttons").empty();
 
 for (var i=0; i < topics.length; i++){
 	var buttons=$('<button>').text(topics[i]);
@@ -8,7 +10,9 @@ for (var i=0; i < topics.length; i++){
 	console.log(buttons.attr("data-topic"));
 	//assign the text as the value of an attribute "data-topic"
 };
-	//$('#viewGifs').prepend("<img src='"+response.data[i].images.downsized.url+"'>");
+};
+
+renderButton();	//$('#viewGifs').prepend("<img src='"+response.data[i].images.downsized.url+"'>");
 
 	//button onclick event that will grab the gifs and apply attributes
  $("#buttons").on("click", ".test" , function(){
@@ -61,43 +65,13 @@ for (var i=0; i < topics.length; i++){
  	
  })
 
+ $("#submitButton").on("click", function(event){
+ 	event.preventDefault();
+ 	console.log("working");
+ 	var userInput=$("#userInput").val();
+ 	console.log(userInput);
+ 	topics.push(userInput);
+ 	console.log(topics);
+ 	renderButton();
+ })
 
-//condition for image onclick to check whether state is animate or still
-
-
-
-/*$.ajax({
-	url:"",
-	method: "GET"
-}).done(function(response){
-	console.log(response);
-})
-*.
-
-//create url variable
-//create search term variable
-//search term will need to be added as data-topic attribute of teh button
-
-//create input field
-//create submit button
-
-//onclick event to grab response for all butons
-
-/*$('button').on('click', function(){
-	var x = $(this).data("search");
-	var queryUrl = "http://api.giphy.com/v1/gifs/search?q=" + x + "&limit=10&api_key=dc6zaTOxFJmzC";
-
-	$.ajax({
-	url: queryUrl,
-	method: 'GET'
-}). done(function(response){
-	console.log(response);
-	for(var i=0; i<response.data.length; i++){
-	$('#viewGifs').prepend("<p>Rating: "+response.data[i].rating+"</p>");
-	$('#viewGifs').prepend("<img src='"+response.data[i].images.downsized.url+"'>");
-}
-
-})
-
-});
-*/
