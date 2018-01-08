@@ -7,7 +7,7 @@ for (var i=0; i < topics.length; i++){
 	buttons.addClass("test");
 	buttons.attr("data-topic", topics[i]);
 	$('#buttons').append(buttons);
-	console.log(buttons.attr("data-topic"));
+	
 	//assign the text as the value of an attribute "data-topic"
 };
 };
@@ -24,8 +24,7 @@ renderButton();	//$('#viewGifs').prepend("<img src='"+response.data[i].images.do
 		url: queryUrl,
 		method: "GET"
 	}).done(function(response){
-		console.log(response);
-		console.log("The response object: " + response.data[1].url);		
+			
 		//var staticGif=response.data[1].url;
 		for (var i=0; i < response.data.length; i++){
 			var rating=$("<p>").text("Rating: " + response.data[i].rating);
@@ -34,7 +33,7 @@ renderButton();	//$('#viewGifs').prepend("<img src='"+response.data[i].images.do
 
 			//$('#viewGifs').prepend("<p>Rating: "+response.data[i].rating+"</p>");
 			//$('#viewGifs').prepend("<img src='"+response.data[i].images.downsized_still.url+"'>");
-			console.log(response.data[i].images.downsized_still.url);
+			
 			gif.attr("data-state", "still");
 			gif.attr("data-still", response.data[i].images.downsized_still.url );
 			gif.attr("data-animate", response.data[i].images.downsized.url );
@@ -67,9 +66,9 @@ renderButton();	//$('#viewGifs').prepend("<img src='"+response.data[i].images.do
 
  $("#submitButton").on("click", function(event){
  	event.preventDefault();
- 	console.log("working");
+ 	
  	var userInput=$("#userInput").val();
- 	console.log(userInput);
+ 	
  	topics.push(userInput);
  	console.log(topics);
  	renderButton();
