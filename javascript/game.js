@@ -28,6 +28,8 @@ renderButton();
 			
 		//var staticGif=response.data[1].url;
 		for (var i=0; i < response.data.length; i++){
+
+			
 			var rating=$("<p>").text("Rating: " + response.data[i].rating);
 			var gif=$("<img>").attr("src", response.data[i].images.downsized_still.url);
 			//console.log(gif);	
@@ -36,9 +38,12 @@ renderButton();
 			gif.attr("data-still", response.data[i].images.downsized_still.url );
 			gif.attr("data-animate", response.data[i].images.downsized.url );
 			gif.addClass("gif");
-			
-			$("#viewGifs").prepend(rating);
-			$("#viewGifs").prepend(gif);
+
+
+			var giphy = $("<div class = 'giphy'>").append(gif, rating);
+			$("#viewGifs").prepend(giphy);
+			// $("#viewGifs").prepend(rating);
+			// $("#viewGifs").prepend(gif);
 		}		
 		});
  });
