@@ -1,0 +1,29 @@
+img.gif {
+    border-style: solid;
+    border-width: 3px;
+    height: 400px;
+    width: 400px;    
+    
+
+}
+
+div.giphy {
+    max-width: 400px;  
+    display: inline-block;
+    float: left;
+    margin: 10px;
+    
+}
+
+#viewGifs {
+    /* width: 300px; */
+}
+
+/* .clearfix:after {
+    clear: both;
+    content: ".";
+    display: block;
+    height: 0;
+    line-height: 0;
+    visibility: hidden;
+} */
